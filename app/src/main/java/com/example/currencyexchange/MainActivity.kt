@@ -47,6 +47,14 @@ class MainActivity : AppCompatActivity() {
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>, p1: View?, p2: Int, p3: Long) {
                     currencyInput = p0.getItemAtPosition(p2).toString()
+                    when(currencyInput) {
+                        "Viet Nam - Dong" -> tmp = input.text.toString().toDoubleOrNull() ?: 0.0
+                        "Korea - Won" -> tmp = (input.text.toString().toDoubleOrNull() ?: 0.0) *  17.43
+                        "United States - Dollar" -> tmp = (input.text.toString().toDoubleOrNull() ?: 0.0) * 25575
+                        "Thailand - Bath" -> tmp = (input.text.toString().toDoubleOrNull() ?: 0.0) * 752.81
+                        "India - Rupee" -> tmp = (input.text.toString().toDoubleOrNull() ?: 0.0) * 298.91
+                    }
+
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -64,6 +72,13 @@ class MainActivity : AppCompatActivity() {
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>, p1: View?, p2: Int, p3: Long) {
                     currencyOutput = p0.getItemAtPosition(p2).toString()
+                    when(currencyOutput) {
+                        "Viet Nam - Dong" -> output.text = "₫ " + String.format(Locale.getDefault(), "%.2f", tmp)
+                        "Korea - Won" -> output.text = "₩ " + String.format(Locale.getDefault(), "%.2f", tmp * 0.057)
+                        "United States - Dollar" -> output.text = "$ "+ String.format(Locale.getDefault(), "%.2f", tmp * 0.000039)
+                        "Thailand - Bath" -> output.text = "฿ " + String.format(Locale.getDefault(), "%.2f", tmp * 0.0013)
+                        "India - Rupee" -> output.text = "₹ " + String.format(Locale.getDefault(), "%.2f", tmp * 0.0033)
+                    }
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -82,18 +97,18 @@ class MainActivity : AppCompatActivity() {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 when(currencyInput) {
-                    "Viet Nam - Dong" -> tmp = s.toString().toDouble()
-                    "Korea - Won" -> tmp = s.toString().toDouble() *  17.43
-                    "United States - Dollar" -> tmp = s.toString().toDouble() * 25575
-                    "Thailand - Bath" -> tmp = s.toString().toDouble() * 752.81
-                    "India - Rupee" -> tmp = s.toString().toDouble() * 298.91
+                    "Viet Nam - Dong" -> tmp = s.toString().toDoubleOrNull() ?: 0.0
+                    "Korea - Won" -> tmp = (s.toString().toDoubleOrNull() ?: 0.0) *  17.43
+                    "United States - Dollar" -> tmp = (s.toString().toDoubleOrNull() ?: 0.0) * 25575
+                    "Thailand - Bath" -> tmp = (s.toString().toDoubleOrNull() ?: 0.0) * 752.81
+                    "India - Rupee" -> tmp = (s.toString().toDoubleOrNull() ?: 0.0) * 298.91
                 }
                 when(currencyOutput) {
-                    "Viet Nam - Dong" -> output.text = String.format(Locale.getDefault(), "%.2f", tmp)
-                    "Korea - Won" -> output.text = String.format(Locale.getDefault(), "%.2f", tmp * 0.057)
-                    "United States - Dollar" -> output.text = String.format(Locale.getDefault(), "%.2f", tmp * 0.000039)
-                    "Thailand - Bath" -> output.text = String.format(Locale.getDefault(), "%.2f", tmp * 0.0013)
-                    "India - Rupee" -> output.text = String.format(Locale.getDefault(), "%.2f", tmp * 0.0033)
+                    "Viet Nam - Dong" -> output.text = "₫ " + String.format(Locale.getDefault(), "%.2f", tmp)
+                    "Korea - Won" -> output.text = "₩ " + String.format(Locale.getDefault(), "%.2f", tmp * 0.057)
+                    "United States - Dollar" -> output.text = "$ "+ String.format(Locale.getDefault(), "%.2f", tmp * 0.000039)
+                    "Thailand - Bath" -> output.text = "฿ " + String.format(Locale.getDefault(), "%.2f", tmp * 0.0013)
+                    "India - Rupee" -> output.text = "₹ " + String.format(Locale.getDefault(), "%.2f", tmp * 0.0033)
                 }
             }
 

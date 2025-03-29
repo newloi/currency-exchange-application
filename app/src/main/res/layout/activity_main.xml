@@ -27,6 +27,7 @@
             android:inputType="numberDecimal"
             android:padding="10sp"
             android:textSize="30sp"
+            android:text="0"
             android:textStyle="bold" />
 
         <Spinner
@@ -39,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="10sp"
+            android:text="0"
             android:textSize="30sp" />
 
         <Spinner
